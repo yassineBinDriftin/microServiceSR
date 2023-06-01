@@ -13,14 +13,14 @@ spring:
             allowed-methods: "*"
             allowed-headers: "*"
       routes:
-        - id: candidate
+        - id: candidate-service
           uri: lb://candidate-service
           predicates:
-            - Path=/GestionCandidat/**
-        - id: participant
-          uri: lb://participation-service
+            - Path=/candidates/**
+        - id : candidature-service
+          uri: lb://candidature-service
           predicates:
-            - Path=/participant/**
+            - Path=/candidatures/**
         - id : auth-service
           uri: lb://auth-service
           predicates:

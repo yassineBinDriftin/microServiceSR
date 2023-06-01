@@ -9,15 +9,15 @@ class condidateController {
         console.log(req.file.filename)
         let api_result = null
         let candidate_data;
-        api_result = await axios.get(`https://api.apilayer.com/resume_parser/url?url=http://fff0-41-225-140-80.ngrok.io/api/candidate/download/${req.file.filename}`,{
+        /*api_result = await axios.get(`https://api.apilayer.com/resume_parser/url?url=http://fff0-41-225-140-80.ngrok.io/api/candidate/download/${req.file.filename}`,{
             headers:{
                 "apikey":"gNoCFMNQBfLqUGoDtODxxbBX3qj2sMwM"
             },
-        })
-        if (api_result) 
+        })*/
+        if (api_result)
             candidate_data = api_result.data
         else{
-            candidate_data = defaultData 
+            candidate_data = defaultData
             candidate_data.name = uniqueNamesGenerator({
                 dictionaries: [starWars]
               })
@@ -26,10 +26,10 @@ class condidateController {
         const created_data = await cv.create({raw_data:candidate_data,path:req.file.path,fileName:req.file.filename})
         
         try{
-        await axios.post("http://localhost:8082/candidates/",candidate_data)
+        await axios.post("http://192.168.1.9:8083/candidates/",candidate_data)
         }catch(err){
             console.log(err)
-        } 
+        }
         candidate_data._id = created_data._id       
         return res.json({status:"done",candidate_data})
     }

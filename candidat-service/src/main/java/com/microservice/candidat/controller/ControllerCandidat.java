@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping(value = "GestionCandidat")
+@RequestMapping(value = "API/GestionCandidat")
 public class ControllerCandidat {
     @Autowired
     IServiceCandidat serviceCandidat ;
@@ -16,7 +16,7 @@ public class ControllerCandidat {
     public Candidat addCandidat(@RequestBody Candidat c ) {
         return serviceCandidat.addCandidat(c) ;
     }
-    @GetMapping("/getAll")
+    @GetMapping("/allcandidats")
     public List<Candidat> getAllCandidats(){
         return serviceCandidat.allCandidaits() ;
     }

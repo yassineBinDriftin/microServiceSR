@@ -31,4 +31,3 @@ public class Candidat implements Serializable {
         return id;
     }
 }
-//test git
